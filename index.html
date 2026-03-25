@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Day Exploit - ART Jam</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #00ff41;
+            --accent-color: #ff003c;
+            --card-bg: #111;
+            --border-color: #00ff41;
+        }
+
+        .light-mode {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #e60039;
+            --card-bg: #f4f4f4;
+            --border-color: #333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px double var(--border-color);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            background: var(--text-color);
+            color: var(--bg-color);
+            border: 2px solid var(--border-color);
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        .jackpot-container {
+            text-align: center;
+            border: 2px dashed var(--accent-color);
+            padding: 30px;
+            margin-bottom: 40px;
+            background: rgba(255, 0, 60, 0.05);
+        }
+
+        .jackpot-amount {
+            font-size: 2.5em;
+            color: var(--accent-color);
+            display: block;
+            margin: 10px 0;
+        }
+
+        #countdown {
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--text-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            position: relative;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            z-index: -1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 15px var(--text-color);
+        }
+
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.85em;
+            line-height: 1.6;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="theme-toggle" id="modeBtn">TOGGLE PROTOCOL</button>
+
+    <div class="container">
+        <header>
+            <h1>ZERO DAY EXPLOIT: ART JAM</h1>
+            <p>> STATUS: ACTIVE_CONTEST // ENCRYPTION: NONE</p>
+        </header>
+
+        <section class="jackpot-container">
+            <span>CURRENT REWARD:</span>
+            <span class="jackpot-amount">5€ + 50% OF DONATIONS</span>
+            <span class="jackpot-amount">5€ + 50% OF 0.00€</span>
+            <span class="jackpot-amount">5€ + 0.00€</span>
+            <span class="jackpot-amount">= 5.00€</span>
+            <p>TIME REMAINING: <span id="countdown">--:--:--:--</span></p>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h3>OBJECTIVE</h3>
+                <p>Design the official Steam Store Capsules for "Zero Day Exploit".</p>
+                <ul>
+                    <li>Style: Cyberpunk / Digital</li>
+                    <li>Strictly NO Faces</li>
+                    <li>Content: FSK 12 (Safe for work)</li>
+                    <li>Assets: Mandatory usage of provided files</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>SUBMISSION</h3>
+                <p>Send your data package to:<br>
+                    <strong style="color: var(--accent-color);">y-game@gmx.de</strong>
+                </p>
+                <p>Include: PNG/JPG + Source Files (PSD/etc.)</p>
+                <a href="https://github.com/TomatenHead/Zero_Day_Exploit/archive/refs/heads/main.zip" class="btn">ACCESS
+                    ASSET PACK</a>
+                <a href="https://github.com/TomatenHead/Zero_Day_Exploit" class="btn">VIEW ON GITHUB</a>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px;">
+            <h3>REQUIRED FORMATS (STEAM)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Dimensions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Header Capsule</td>
+                        <td>460 x 215 px</td>
+                    </tr>
+                    <tr>
+                        <td>Small Capsule</td>
+                        <td>231 x 87 px</td>
+                    </tr>
+                    <tr>
+                        <td>Main Capsule</td>
+                        <td>616 x 353 px</td>
+                    </tr>
+                    <tr>
+                        <td>Vertical Capsule</td>
+                        <td>374 x 448 px</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>LEGAL: Submission grants full, exclusive, worldwide rights to the "Zero Day Exploit" project.<br>
+                Explicit content will be purged without guaranteed notice.</p>
+            <a href="https://github.com/TomatenHead/Zero_Day_Exploit" class="btn">DONATE</a>
+            <p>© 2026 // SYSTEM_OPERATOR: ADMIN</p>
+        </div>
+    </div>
+
+    <script>
+        // --- THEME TOGGLE LOGIC ---
+        const modeBtn = document.getElementById('modeBtn');
+        const body = document.body;
+
+        // Check for saved user preference
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+        }
+
+        modeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            // Save preference
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // --- COUNTDOWN LOGIC ---
+        function updateCountdown() {
+            const deadline = new Date("July 1, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = deadline - now;
+
+            if (diff <= 0) {
+                document.getElementById("countdown").innerHTML = "CONTEST CLOSED";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>
